@@ -11,9 +11,16 @@ import Menu from 'material-ui/svg-icons/navigation/menu';
 import IconButton from 'material-ui/IconButton';
 
 
+import { appConfig } from '../../modules/config/app-config';
+import { colorConfig } from '../../modules/config/color-config';
+
+const { appName } = appConfig;
+const { darkPrimary } = colorConfig;
+
 const styles = {
   AppNavigation: {
     color: "#ffffff",
+    backgroundColor: darkPrimary
   },
   titleLink: {
     textDecoration: "none",
@@ -45,7 +52,7 @@ export class AppNavigation extends React.Component {
   render() {
     return <div>
               <AppBar 
-                title={<Link to="/" style={styles.titleLink}>Application Name</Link>}
+                title={<Link to="/" style={styles.titleLink}>{appName}</Link>}
                 style={styles.AppNavigation}
                 iconElementRight={ this.renderNavigation(this.props.hasUser, this.props.currentPath)}
                 iconElementLeft={<IconButton onClick={this.handleToggle}><Menu className="mobileNav" color={"#FFFFFF"} /></IconButton>}

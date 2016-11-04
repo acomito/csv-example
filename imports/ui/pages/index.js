@@ -1,23 +1,96 @@
+//top-level imports
 import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
+//material-ui
 import RaisedButton from 'material-ui/RaisedButton';
-import 'flexboxgrid';
+//modules
+import { appConfig } from '../../modules/config/app-config'
+import { colorConfig } from '../../modules/config/color-config'
 
-styles={
-	raisedButtons: {
+import CompanySearchList  from '../components/company-search/company-search-list-container';
+
+
+// DESTRUCTURING
+// ------------------------------------
+
+const { appName, appDescription } = appConfig;
+
+const {darkPrimary, primary1Color , primary2Color,  accent1Color, secondayText} = colorConfig;
+
+
+// STYLES
+// ------------------------------------
+// STYLES
+//----------------------------------------
+const styles = StyleSheet.create({
+    raisedButtons: {
 		width: "300px",
 		margin: "30px 10px 10px 10px"
 	},
-}
+	//JUMBOTRON STYLES
+	jumbotronStyles: {
+		overflow: 'hidden', 
+		margin: 0,
+		width: '100%', 
+		minHeight: '30vh', 
+		display: 'block',
+		color: '#fff', 
+		background: primary1Color, 
+		paddingTop: "40px",
+		paddingBottom: "20px",
+	},
+	jumbotronHeader: {
+		'@media (max-width: 667px)': {
+            fontSize: '18px'
+        }
+	},
+	jumbotronSubHeader: {
+		marginBotom: '80px',
+		'@media (max-width: 667px)': {
+            fontSize: '25px'
+        }
+	},
+	//
+	hideOnMobile: {
+		'@media (max-width: 667px)': {
+            display: 'none'
+        }
+	},
+	showOnMobile: {
+		'@media (min-width: 667px)': {
+            display: 'none'
+        }
+	},
+});
 
+
+
+
+
+
+// INTERNAL COMPONENTS
+// ------------------------------------
+
+
+const Jumbotron = ({props}) => (
+  		<div className={css(styles.jumbotronStyles) + ' row middle-xs center-xs'}>
+			<div className='box'>
+	  			<h2 className={css(styles.jumbotronSubHeader)}>{appName}</h2>
+	  			<h1 className={css(styles.jumbotronHeader)}>{appDescription}</h1>
+	  			<div>
+	  			</div>
+	  		</div>
+  		</div>
+);
+
+
+
+// EXPORTED COMPONENT
+// ------------------------------------
 export const Index = () => (
-  	<div  className="row center-xs middle-xs" style={{padding: "100px 0px"}}>
-		<div className="box">
-	  		<h2>Base Material-UI</h2>
-	    	<p>A Material-UI starting point for Meteor/React applications.</p>
-			<RaisedButton style={styles.raisedButtons} secondary={true} label="Material-UI Base Documentation" href="https://github.com/acomito/base" />
-	    	<RaisedButton style={styles.raisedButtons} label="Original Base Documentation" href="https://themeteorchef.com/base" />
-	    	<p style={ { fontSize: '14px', color: '#aaa', marginTop: "20px" } }>forked from themeteorchef <a href="https://themeteorchef.com/base">base</a> at v4.5.0</p>
-		</div>
+  	<div>
+		<Jumbotron />
+		<CompanySearchList />
   	</div>
 );
 

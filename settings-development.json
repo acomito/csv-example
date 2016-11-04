@@ -1,9 +1,15 @@
 {
+  "galaxy.meteor.com": {
+    "env": {
+      "ROOT_URL": "http://sales-gig-dev.meteorapp.com",
+      "MONGO_URL": "mongodb://arcomito:arcomito@ds145395.mlab.com:45395/sales-gig-dev"
+    }
+  },
   "public": {
 	  	"config": {
-	      "appName": "Base Material",
+	      "appName": "SalesGIG",
 	      "supportEmail": "support@support.org",
-	      "supportName": "Base"
+	      "supportName": "Support"
 	  	}
 	},
 	"private": {}

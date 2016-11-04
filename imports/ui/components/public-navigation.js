@@ -12,6 +12,9 @@ const styles = {
 
 export const PublicNavigation = ({currentPath}) => (
 	<div className="navLinks" >
+      <Link to="/" >
+        <FlatButton labelStyle={returnActiveLink(currentPath, '/')} style={styles.navLink} label="Home" />
+      </Link>
     	<Link to="/signup" >
     		<FlatButton labelStyle={returnActiveLink(currentPath, '/signup')} style={styles.navLink} label="Signup" />
     	</Link>

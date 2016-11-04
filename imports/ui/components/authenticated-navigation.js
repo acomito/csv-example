@@ -72,10 +72,7 @@ handleLogout() {
     const currentPath = this.props.currentPath;
     return <div className="navLinks" >
             <Link to="/">
-              <FlatButton labelStyle={returnActiveLink(currentPath, '/')} style={styles.navLink} label="Index" />
-            </Link>
-            <Link to="/documents" >
-              <FlatButton labelStyle={returnActiveLink(currentPath, '/documents')} style={styles.navLink} label="Documents" />
+              <FlatButton labelStyle={returnActiveLink(currentPath, '/')} style={styles.navLink} label="Home" />
             </Link>
             <UserNameDropDown handleTouchTap={this.handleTouchTap} />
             <Popover

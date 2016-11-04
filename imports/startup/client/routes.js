@@ -13,6 +13,11 @@ import { NotFound } from '../../ui/pages/not-found';
 import { RecoverPassword } from '../../ui/pages/recover-password';
 import { ResetPassword } from '../../ui/pages/reset-password';
 import { Signup } from '../../ui/pages/signup';
+
+//new
+import { NaicsResultsPage } from '../../ui/pages/naics-results';
+
+
 //Admin
 import { AdminHomePage } from '../../ui/pages/admin/admin-home';
 import { AdminLoginPage } from '../../ui/pages/admin/admin-login';
@@ -35,11 +40,12 @@ Meteor.startup(() => {
     <MuiThemeProvider muiTheme={muiTheme}>
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
-        <IndexRoute name="index" component={ Index } onEnter={ requireAuth } />
+        <IndexRoute name="index" component={ Index } />
         <Route name="documents" path="/documents" component={ Documents } onEnter={ requireAuth } />
         <Route name="login" path="/login" component={ Login } />
         <Route name="recover-password" path="/recover-password" component={ RecoverPassword } />
         <Route name="reset-password" path="/reset-password/:token" component={ ResetPassword } />
+        <Route name="naics" path="/naics/:id" component={ NaicsResultsPage } />
         <Route name="signup" path="/signup" component={ Signup } />
         <Route name="admin-login" path="/admin-login" component={ AdminLoginPage }  />
       </Route>
