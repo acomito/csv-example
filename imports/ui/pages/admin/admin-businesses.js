@@ -1,8 +1,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import AdminHome from '../../components/admin/admin-home/admin-home-container'
+import AdminNaics from '../../components/admin/admin-naics/admin-naics-container'
 import { StyleSheet, css } from 'aphrodite';
-
+import { AdminBusinesses } from '../../components/admin/admin-businesses/admin-businesses'
 
 // STYLES
 //----------------------------------------
@@ -25,11 +25,10 @@ const styles = StyleSheet.create({
     },
 });
 
-export const AdminHomePage = () => (
+export const AdminBusinessesPage = () => (
   	<div  className="row center-xs middle-xs" style={{padding: "100px 0px"}}>
-		<div className="box">
-	  		<h2>Admin Home</h2>
-	  		<AdminHome />
-		</div>
+  		<div className="box">
+  	  		<AdminBusinesses />
+  		</div>
   	</div>
 );

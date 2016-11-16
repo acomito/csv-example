@@ -24,11 +24,11 @@ users.forEach(({ email, password, profile, roles }) => {
   }
 });
 
-
+/*
 const numberOfCompanies = Companies.find({},{limit: 1}).fetch();
       
       if (numberOfCompanies.length === 0) {
 
         Meteor.call('seedDB');
 
-      }
+      }*/

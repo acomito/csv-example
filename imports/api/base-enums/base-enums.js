@@ -28,7 +28,8 @@ export const modelEnums = [
     'watchGroup',
     'household',
     'householdMembers',
-    'company'
+    'company',
+    'naics'
 ];
 
 
@@ -59,7 +60,8 @@ export const modelEnumsObject = {
     watchGroup: 'watchGroup',
     household: 'household',
     householdMembers: 'householdMembers',
-    company: 'company'
+    company: 'company',
+    naics: 'naics'
 };
 
 

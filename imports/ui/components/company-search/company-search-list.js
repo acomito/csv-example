@@ -29,14 +29,12 @@ const styles = StyleSheet.create({
 const CompanyCard = ({ company }) => (
 	<div className='col-xs-12 col-sm-6 col-md-4'>
 		<div className='box'>
-			<Link to={'/naics/' + company._id}>
+			<Link to={'/company/' + company._id}>
 				<Card style={{marginBottom: '20px', marginTop: '20px', minHeight: 300}}>
 					<CardTitle title={company.title} />
 					<CardText style={{textAlign: 'left'}}>
-						<h6 style={{marginBottom: '5px', color: '#666'}}>description:</h6>
-						{company.description}
-						<h6 style={{marginBottom: '5px', color: '#666'}}>address:</h6>
-						{company.address}
+						<h6 style={{marginBottom: '5px', color: '#666'}}>city:</h6>
+						{company.address && company.address.city ? company.address.city : null}
 					</CardText>
 				</Card>
 			</Link>

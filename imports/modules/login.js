@@ -3,6 +3,7 @@ import 'jquery-validation';
 import { browserHistory } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
+import { Roles } from 'meteor/alanning:roles';
 import { getInputValue } from './get-input-value';
 
 let component;
@@ -32,8 +33,13 @@ const login = (email, password) => {
     
     if (error) { Bert.alert(error.reason, 'warning'); return; }
     //else
+    if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+      browserHistory.push('/admin/home');
+      return;
+    }
     Bert.alert('Logged in!', 'success');
     browserHistory.push('/');
+    return;
 
   });
 };

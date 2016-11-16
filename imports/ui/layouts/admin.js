@@ -1,18 +1,28 @@
 import React from 'react';
 import AppNavigation from '../containers/app-navigation';
 import { browserHistory } from 'react-router';
-import 'flexboxgrid';
+import AdminNavigation from '../containers/admin-navigation';
+
+
 
 export const Admin = React.createClass({
-  
   propTypes: {
     children: React.PropTypes.element.isRequired,
   },
-
+  componentWillMount(){
+    Tracker.autorun(() => {
+      if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+          return;
+      }
+       browserHistory.push('/');
+       return;
+    })
+  },
   render() {
 
+
     return <div>
-            <AppNavigation currentPath={this.props.location.pathname}  />
+            <AdminNavigation path={location.pathname} currentPath={this.props.location.pathname}  />
               { this.props.children }
           </div>;
   }

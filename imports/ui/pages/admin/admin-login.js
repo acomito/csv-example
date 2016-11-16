@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, browserHistory } from 'react-router';
 import { StyleSheet, css } from 'aphrodite';
 //modules
-//import { handleLogin } from '../../modules/login';
+import { handleLogin } from '../../../modules/login';
 //material-ui stuff
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
@@ -52,7 +52,7 @@ class AdminLogin extends React.Component {
   submit(data) {
     let email = data.emailAddress;
     let password = data.password;
-   // handleLogin(email, password);
+    handleLogin(email, password);
   }
 
   enableButton() {

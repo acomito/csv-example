@@ -22,7 +22,8 @@ Meteor.methods({
 				revenue: 500000,
 				employeeCount: 20,
 				ownerId: faker.company.companyName(),
-				address: faker.address.streetAddress()
+				address: faker.address.streetAddress(),
+				naicsCodes:['111199']
 		    }
 		   
 		    Companies.insert(company);

@@ -9,15 +9,15 @@ import { modelEnums, modelEnumsObject, visibilityEnums } from '../base-enums/bas
 
 // DECLARE COLLECTION + ALLOW/DENY RULES
 // --------------------------------------------------------------
-export const Companies = new Mongo.Collection('Companies');
+export const NaicsCodes = new Mongo.Collection('NaicsCodes');
 
-Companies.allow({
+NaicsCodes.allow({
   insert: () => false,
   update: () => false,
   remove: () => false,
 });
 
-Companies.deny({
+NaicsCodes.deny({
   insert: () => true,
   update: () => true,
   remove: () => true,
@@ -27,72 +27,43 @@ Companies.deny({
 // SCHEMA CREATION
 // --------------------------------------------------------------
 
-Companies.baseSchema = baseSchema;
+NaicsCodes.baseSchema = baseSchema;
 //Households.addressSchema = addressSchema;
 
 
-let locationSchema = new SimpleSchema({
-  address: {
+NaicsCodes.schema = new SimpleSchema({
+  title: {
     type: String,
     optional: true
   },
-  address2: {
+  naicsCode: {
     type: String,
     optional: true
   },
-  city: {
+  levelOne:{
     type: String,
     optional: true
   },
-  zip: {
+  levelTwo:{
     type: String,
     optional: true
   },
-  county: {
+  levelThree:{
     type: String,
     optional: true
   },
-});
-
-
-
-Companies.schema = new SimpleSchema({
+  levelFour:{
+    type: String,
+    optional: true
+  },
   modelType: {
     type: String,
     allowedValues: modelEnums,
     autoValue: function() {
         if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-            return modelEnumsObject.company;
+            return modelEnumsObject.naics;
         }
     }
-  },
-  revenue: {
-    type: Number,
-    optional: true
-  },
-  employeeCount: {
-    type: Number,
-    optional: true
-  },
-  naicsCodes:{
-    type: [String],
-    optional: true
-  },
-  website: {
-    type: String,
-    optional: true
-  },
-  phone: {
-    type: String,
-    optional: true
-  },
-  address: {
-    type: locationSchema,
-    optional: true,
-  },
-  location: {
-    type: addressSchema,
-    optional: true
   },
 });
 
@@ -102,8 +73,8 @@ Companies.schema = new SimpleSchema({
 // ATTACH SCHEMAS TO THIS COLLECTION
 // --------------------------------------------------------------
 
-Companies.attachSchema(Companies.schema); // schema specific to this collection's model (i.e. the schema declared in this file)
-Companies.attachSchema(Companies.baseSchema); // relevant for almost all collections
+NaicsCodes.attachSchema(NaicsCodes.schema); // schema specific to this collection's model (i.e. the schema declared in this file)
+NaicsCodes.attachSchema(NaicsCodes.baseSchema); // relevant for almost all collections
 //Households.attachSchema(Households.addressSchema); // relevant for almost all collections
 
 
@@ -113,7 +84,7 @@ Companies.attachSchema(Companies.baseSchema); // relevant for almost all collect
 //--------------------------------------------------------------
 
 if (Meteor.isServer) {
-  Companies._ensureIndex({
+  NaicsCodes._ensureIndex({
     "title": "text",
   });
 }
