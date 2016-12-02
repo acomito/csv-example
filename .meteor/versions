@@ -68,6 +68,7 @@ meteortoys:status@3.0.0
 meteortoys:sub@3.0.0
 meteortoys:throttle@3.0.0
 meteortoys:toykit@3.0.4
+mikowals:batch-insert@1.1.14
 minifier-css@1.2.15
 minifier-js@1.2.15
 minimongo@1.0.18

@@ -100,10 +100,37 @@ class BusinessesUpload extends React.Component{
 		this.setState({loading: true});
 		const stopLoading = () => this.setState({loading: false});
 		 Papa.parse( event.target.files[0], {
-	      header: true,
+		 	header: true,
+			chunk: function(results, parser) {
+				console.log("Chunk:", results.data);
+				parser.pause();
+				const resumeParsing = () => parser.resume();
+				 Meteor.call( 'utility.parseBusinesses', results.data, function(error, response){
+				 	if (error) { parser.abort(); Bert.alert(error.reason, 'danger'); return; }
+				 	Bert.alert('chunk done!', 'success');
+				 	resumeParsing();
+				 });
+			},
 	      complete( results, file ) {
-	      	console.log(results.data)
-	        Meteor.call( 'utility.parseBusinesses', results.data, ( error, response ) => {
+	      	console.log('done!')
+/*	        Meteor.call( 'utility.parseBusinesses', results.data, ( error, response ) => {
+	          if ( error ) {
+	            Bert.alert( error.reason, 'warning' );
+	            stopLoading();
+	          } else {
+	          	Bert.alert( 'done!', 'success' );
+	          	stopLoading();
+	            // Handle success here.
+	          }
+	        });*/
+	      }
+	    });
+	}
+/*	handleUpload(event){
+		this.setState({loading: true});
+		const stopLoading = () => this.setState({loading: false});
+
+	        Meteor.call( 'utility.serverParse', event.target.files[0], ( error, response ) => {
 	          if ( error ) {
 	            Bert.alert( error.reason, 'warning' );
 	            stopLoading();
@@ -113,15 +140,14 @@ class BusinessesUpload extends React.Component{
 	            // Handle success here.
 	          }
 	        });
-	      }
-	    });
-	}
+	}*/
 	render(){
 
 		return <div>
-					<RaisedButton label="Upload Businesses" labelPosition="before" className={css(styles.uploadButton)} >
+					{!this.state.loading
+					? <RaisedButton label="Upload Businesses" labelPosition="before" className={css(styles.uploadButton)} >
 			               <input type="file" name="image"  className={css(styles.imageInput)} onChange={this.handleUpload} />
-			          </RaisedButton>
+			          </RaisedButton> : <Loading />}
 			  	</div>
 	}
 }

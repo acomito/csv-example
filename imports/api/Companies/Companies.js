@@ -27,7 +27,7 @@ Companies.deny({
 // SCHEMA CREATION
 // --------------------------------------------------------------
 
-Companies.baseSchema = baseSchema;
+//Companies.baseSchema = baseSchema;
 //Households.addressSchema = addressSchema;
 
 
@@ -44,6 +44,10 @@ let locationSchema = new SimpleSchema({
     type: String,
     optional: true
   },
+  state: {
+    type: String,
+    optional: true
+  },
   zip: {
     type: String,
     optional: true
@@ -55,8 +59,7 @@ let locationSchema = new SimpleSchema({
 });
 
 
-
-Companies.schema = new SimpleSchema({
+/*Companies.schema = new SimpleSchema({
   modelType: {
     type: String,
     allowedValues: modelEnums,
@@ -65,6 +68,62 @@ Companies.schema = new SimpleSchema({
             return modelEnumsObject.company;
         }
     }
+  },
+  Industry: {
+    type: String,
+    optional: true
+  },
+  'NAICS Code': {
+    type: String,
+    optional: true
+  },
+  Desc: {
+    type: String,
+    optional: true
+  },
+  'Company Name': {
+    type: String,
+    optional: true
+  },
+  'Annual Revenue': {
+    type: String,
+    optional: true
+  },
+  State: {
+    type: String,
+    optional: true
+  },
+  City: {
+    type: String,
+    optional: true
+  },
+  County: {
+    type: String,
+    optional: true
+  },
+  Address2: {
+    type: String,
+    optional: true,
+  },
+  Address: {
+    type: String,
+    optional: true
+  },
+});*/
+
+/*Companies.schema = new SimpleSchema({
+  modelType: {
+    type: String,
+    allowedValues: modelEnums,
+    autoValue: function() {
+        if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+            return modelEnumsObject.company;
+        }
+    }
+  },
+  industry: {
+    type: String,
+    optional: true
   },
   revenue: {
     type: Number,
@@ -94,7 +153,7 @@ Companies.schema = new SimpleSchema({
     type: addressSchema,
     optional: true
   },
-});
+});*/
 
 
 
@@ -102,8 +161,8 @@ Companies.schema = new SimpleSchema({
 // ATTACH SCHEMAS TO THIS COLLECTION
 // --------------------------------------------------------------
 
-Companies.attachSchema(Companies.schema); // schema specific to this collection's model (i.e. the schema declared in this file)
-Companies.attachSchema(Companies.baseSchema); // relevant for almost all collections
+//Companies.attachSchema(Companies.schema); // schema specific to this collection's model (i.e. the schema declared in this file)
+//Companies.attachSchema(Companies.baseSchema); // relevant for almost all collections
 //Households.attachSchema(Households.addressSchema); // relevant for almost all collections
 
 
@@ -114,8 +173,9 @@ Companies.attachSchema(Companies.baseSchema); // relevant for almost all collect
 
 if (Meteor.isServer) {
   Companies._ensureIndex({
-    "title": "text",
+    "title": "text"
   });
+
 }
 
 

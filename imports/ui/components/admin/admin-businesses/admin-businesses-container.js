@@ -5,11 +5,14 @@ import { Loading } from '../../loading.js';
 import { Meteor } from 'meteor/meteor';
 
 const composer = (params, onData) => {
-  const naicsCodesSub = Meteor.subscribe('companies');
-  if (naicsCodesSub.ready()) {
-    const companiesCount = Companies.find().count();
-    onData(null, { companiesCount });
-  }
+
+    Meteor.call('Companies.getCount', 'lol', function(error, response){
+    	if (error) { console.log(error); return; }
+    	console.log(response)
+    	let companiesCount = response;
+    	onData(null, { companiesCount });
+    });
+
 };
 
 export default composeWithTracker(composer, Loading)(AdminBusinesses);

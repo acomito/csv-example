@@ -41,5 +41,8 @@ meteortoys:allthings
 edgee:slingshot
 momentjs:moment
 email
+http
+mikowals:batch-insert
 tmeasday:publish-counts
+#force-ssl
 # harrison:papa-parse

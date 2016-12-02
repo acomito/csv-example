@@ -2,7 +2,7 @@
   "galaxy.meteor.com": {
     "env": {
       "ROOT_URL": "http://sales-gig-dev.meteorapp.com",
-      "MONGO_URL": "mongodb://arcomito:arcomito@ds145395.mlab.com:45395/sales-gig-dev"
+      "MONGO_URL": "mongodb://arcomito:arcomito@ds117988-a0.mlab.com:17988,ds117988-a1.mlab.com:17988/sales-local?replicaSet=rs-ds117988"
     }
   },
   "public": {

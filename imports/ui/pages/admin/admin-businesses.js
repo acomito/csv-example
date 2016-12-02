@@ -2,7 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import AdminNaics from '../../components/admin/admin-naics/admin-naics-container'
 import { StyleSheet, css } from 'aphrodite';
-import { AdminBusinesses } from '../../components/admin/admin-businesses/admin-businesses'
+import AdminBusinesses from '../../components/admin/admin-businesses/admin-businesses-container'
 
 // STYLES
 //----------------------------------------

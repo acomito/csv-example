@@ -17,6 +17,7 @@ import { Signup } from '../../ui/pages/signup';
 //new
 import { NaicsResultsPage } from '../../ui/pages/naics-results';
 import { CompanyResultsPage } from '../../ui/pages/company-results';
+import { JobsResultsPage } from '../../ui/pages/jobs-results';
 
 
 //Admin
@@ -52,6 +53,8 @@ Meteor.startup(() => {
         <Route name="reset-password" path="/reset-password/:token" component={ ResetPassword } />
         <Route name="company" path="/company/:id" component={ CompanyResultsPage } />
         <Route name="naics" path="/naics/:id" component={ NaicsResultsPage } />
+        <Route name="jobs" path="/jobs" component={ JobsResultsPage } />
+        
         
         <Route name="signup" path="/signup" component={ Signup } />
         <Route name="admin-login" path="/admin-login" component={ AdminLoginPage }  />

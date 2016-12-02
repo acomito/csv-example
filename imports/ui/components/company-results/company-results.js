@@ -104,7 +104,7 @@ const CompanyCard = ({company, thisNaicsCode}) => (
             <p style={styles.valueStyle}>{company.employeeCount}</p>
             <br />
             <h4 style={styles.labelStyle}>industry:</h4>
-            <p style={styles.valueStyle}>{thisNaicsCode.title}</p>
+            <p style={styles.valueStyle}>{thisNaicsCode && thisNaicsCode.title ? thisNaicsCode.title : ''}</p>
             <br />
             <h4 style={styles.labelStyle}>revenue:</h4>
             <p style={styles.valueStyle}>{company.revenue}</p>
@@ -147,7 +147,8 @@ export class CompanyResults extends React.Component {
       return <div className='row middle-xs center-xs'>
       <div className='box' style={{width: '800px', margin: '0 auto'}}>
         <CompanyCard company={company} thisNaicsCode={thisNaicsCode} />
-        <Link to={'/naics/' + company.naicsCodes[0]}>
+        {/*<Link to={'/naics/' + company.naicsCodes[0]}>*/}
+        <Link to={'/jobs/'}>
           <RaisedButton label="Next" secondary={true} fullWidth={true} style={{marginTop: '15px'}} />
         </Link>
         {Session.get('naicsSelections').length > 0 && <h2 style={{color: '#666'}}>Current Selections:</h2>}

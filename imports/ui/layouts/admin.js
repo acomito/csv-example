@@ -11,12 +11,9 @@ export const Admin = React.createClass({
   },
   componentWillMount(){
     Tracker.autorun(() => {
-      if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
-          return;
-      }
-       browserHistory.push('/');
-       return;
-    })
+      if (!Meteor.userId()) { browserHistory.push('/'); }
+      return;
+    });
   },
   render() {
 

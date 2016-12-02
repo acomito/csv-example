@@ -53,8 +53,9 @@ const styles = StyleSheet.create({
 
 // EXPORTED COMPONENT
 // ------------------------------------
-export const AdminBusinesses = () => (
+export const AdminBusinesses = ({companiesCount}) => (
   	<div>
+    <h1>{companiesCount}</h1>
     <RaisedButton onClick={()=>Meteor.call('utility.deleteAllComapnies')} label="Delete all businesses"/>
   	</div>
 );

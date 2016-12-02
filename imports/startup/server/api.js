@@ -16,3 +16,4 @@ import '../../api/NaicsCodes/methods.js';
 import '../../api/NaicsCodes/server/publications.js';
 
 import '../../api/utility-methods/utility-methods.js';
+import '../../api/utility-methods/jobs.js';
